@@ -5,6 +5,7 @@ echo "The Job name is : ${env.JOB_NAME}"
 echo "The Build number is : ${env.BUILD_NUMBER}"
 
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))])
+properties([pipelineTriggers([pollSCM(ignorePostCommitHooks: true, scmpoll_spec: 'H/5 * * * *')])])
 
 stage('CheckoutCode'){
 git branch: 'development', credentialsId: 'f14ae53c-aebe-47f3-b3a7-35af843a9a92', url: 'https://github.com/Shaziya007/maven-web-app.git'
