@@ -19,7 +19,7 @@ sh "$mavenHome/bin/mvn sonar:sonar"
 }
 //Upload Artifact into Artifactory repository
 stage('UploadArtifactIntoNexus'){
-sh "mavenHome/bin/mvn deploy"
+sh "$mavenHome/bin/mvn deploy"
 }
 stage('DeployAppIntoTomcat'){
 sshagent(['0319cc43-91bc-4cbf-903f-b3aebed0320d']) {
